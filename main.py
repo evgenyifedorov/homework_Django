@@ -13,7 +13,6 @@ class MyServer(BaseHTTPRequestHandler):
     """
 
     def __get_html_content(self):
-
         """
             Метод возвращает результат верстки файла html
         """
@@ -448,15 +447,15 @@ class MyServer(BaseHTTPRequestHandler):
         """
 
 
-def do_GET(self):
-    """ Метод для обработки входящих GET-запросов """
-    query_components = parse_qs(urlparse(self.path).query)
-    print(query_components)
-    page_content = self.__get_html_content()
-    self.send_response(200)  # Отправка кода ответа
-    self.send_header("Content-type", "text/html")  # Отправка типа данных, который будет передаваться
-    self.end_headers()  # Завершение формирования заголовков ответа
-    self.wfile.write(bytes(page_content, "utf-8"))  # Тело ответа
+    def do_GET(self):
+        """ Метод для обработки входящих GET-запросов """
+        query_components = parse_qs(urlparse(self.path).query)
+        print(query_components)
+        page_content = self.__get_html_content()
+        self.send_response(200)  # Отправка кода ответа
+        self.send_header("Content-type", "text/html")  # Отправка типа данных, который будет передаваться
+        self.end_headers()  # Завершение формирования заголовков ответа
+        self.wfile.write(bytes(page_content, "utf-8"))  # Тело ответа
 
 
 if __name__ == "__main__":
